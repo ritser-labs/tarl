@@ -64,10 +64,6 @@ class AdaptiveGRPOScriptArguments(ScriptArguments):
         default_factory=lambda: ["format", "cosine"], 
         metadata={"help": "Reward functions to use"}
     )
-    reward_weights: list[float] = field(
-        default_factory=lambda: [1.0, 2.0], 
-        metadata={"help": "Weights for reward functions"}
-    )
     
     # Cosine reward parameters
     cosine_min_value_wrong: float = field(default=-1.0, metadata={"help": "Minimum cosine reward for wrong answers"})
