@@ -50,6 +50,32 @@ class GRPOConfig(trl.GRPOConfig):
         default=None,
         metadata={"help": ("The project to store runs under.")},
     )
+    
+    # Token-adaptive RL parameters
+    use_token_adaptive: bool = field(
+        default=False, 
+        metadata={"help": "Whether to use token-adaptive reinforcement learning strategy."}
+    )
+    uncertainty_threshold: float = field(
+        default=0.7, 
+        metadata={"help": "Max probability threshold below which a token is considered uncertain (failure point)."}
+    )
+    entropy_threshold: float = field(
+        default=2.0, 
+        metadata={"help": "Entropy threshold above which a token is considered uncertain."}
+    )
+    min_prefix_length: int = field(
+        default=10, 
+        metadata={"help": "Minimum prefix length before considering truncation."}
+    )
+    max_resamples_per_prefix: int = field(
+        default=3, 
+        metadata={"help": "Maximum number of resamples from the same prefix."}
+    )
+    adaptive_temperature_scale: float = field(
+        default=1.2, 
+        metadata={"help": "Temperature scaling factor for resampling after failure points."}
+    )
 
 
 @dataclass
